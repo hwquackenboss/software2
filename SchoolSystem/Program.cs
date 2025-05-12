@@ -1,2 +1,24 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using SchoolSystem.Data;
+using SchoolSystem.Services;
+
+ServiceProvider _serviceProvider;
+SeedingService _seedingService;
+
+//Create container to hold services for dependency injection
+var services = new ServiceCollection();
+
+//Add services to the service container
+services.AddDbContext<ApplicationDbContext>();
+services.AddScoped<SeedingService>();
+
+_serviceProvider = services.BuildServiceProvider();
+
+//Retrieve instance of SeedingService from the container
+_seedingService = _serviceProvider.GetRequiredService<SeedingService>();
+
+//Call method to seed
+await _seedingService.SeedDatabase();
+
+
