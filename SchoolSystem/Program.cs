@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolSystem.Data;
+using SchoolSystem.Models;
 using SchoolSystem.Services;
 
 ServiceProvider _serviceProvider;
@@ -24,6 +26,14 @@ _basicQueryService = _serviceProvider.GetRequiredService<BasicQueryService>();
 //Call method to seed
 await _seedingService.SeedDatabase();
 
+Instructor? instructor = await _basicQueryService.GetInstructorById(3);
+
+Console.WriteLine($"\nDept: {instructor.Department.Name}\n");
+
+var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
+
+Console.WriteLine(JsonSerializer.Serialize(instructor, jsonOptions));
+
 List<string> instrNames = await _basicQueryService.GetAllInstructorName();
 
 foreach(string name in instrNames) {
@@ -41,3 +51,5 @@ List<string> deptMostCourses = await _basicQueryService.GetDeptWithMostCourses()
 foreach(string name in deptMostCourses) {
     Console.WriteLine(name);
 }
+
+// the fitnessgram pacer test is a multistage aerobic capacity test that gets progressively harder as it continues

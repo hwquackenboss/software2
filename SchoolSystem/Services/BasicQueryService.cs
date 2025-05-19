@@ -20,7 +20,8 @@ public class BasicQueryService {
     public async Task<List<string>> GetAllInstructorName() {
         
         return await _context.Instructors
-        .Select(Instructor => Instructor.FirstName)
+        .Include(instr => instr.Department)
+        .Select(instructor => instructor.FirstName)
         .ToListAsync();
         
     }
@@ -34,12 +35,18 @@ public class BasicQueryService {
 
     }
 
+    public async Task<Instructor?> GetInstructorById(int instructorId) {
+
+        return await _context.Instructors.SingleOrDefaultAsync(instr => instr.Id == instructorId);
+
+    }
+
     public async Task<List<string>> GetDeptWithMostCourses() {
 
         return await _context.Departments
         .OrderBy(dept => dept.Courses.Count)
         .Take(1)
-        .Select(Department => Department.Name)
+        .Select(dept => dept.Name)
         .ToListAsync();
 
     }

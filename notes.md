@@ -8,3 +8,11 @@ EF Core
     Created SeedingService
     Registered SeedingService in Program.cs
     Seeded the database
+
+
+LINQ & EF Core
+
+Navigation properties
+
+Include() method
+
