@@ -34,7 +34,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasIndex("ArtistId");
 
-                    b.ToTable("Albums");
+                    b.ToTable("Album");
                 });
 
             modelBuilder.Entity("Artist", b =>
@@ -49,7 +49,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasKey("ArtistId");
 
-                    b.ToTable("Artists");
+                    b.ToTable("Artist");
                 });
 
             modelBuilder.Entity("Customer", b =>
@@ -84,7 +84,13 @@ namespace Quackenboss_ChinookMusicApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Phone")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PostalCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("State")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("SupportRepId")
@@ -94,7 +100,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasIndex("SupportRepId");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("Employee", b =>
@@ -154,7 +160,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasIndex("ReportsToManagerEmployeeId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("Genre", b =>
@@ -168,7 +174,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasKey("GenreId");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("Invoice", b =>
@@ -205,7 +211,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Invoices");
+                    b.ToTable("Invoice");
                 });
 
             modelBuilder.Entity("InvoiceLine", b =>
@@ -232,7 +238,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasIndex("TrackId");
 
-                    b.ToTable("InvoiceLines");
+                    b.ToTable("InvoiceLine");
                 });
 
             modelBuilder.Entity("MediaType", b =>
@@ -246,7 +252,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasKey("MediaTypeId");
 
-                    b.ToTable("MediaTypes");
+                    b.ToTable("MediaType");
                 });
 
             modelBuilder.Entity("Playlist", b =>
@@ -261,7 +267,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasKey("PlaylistId");
 
-                    b.ToTable("Playlists");
+                    b.ToTable("Playlist");
                 });
 
             modelBuilder.Entity("PlaylistTrack", b =>
@@ -318,7 +324,7 @@ namespace Quackenboss_ChinookMusicApp.Migrations
 
                     b.HasIndex("MediaTypeId");
 
-                    b.ToTable("Tracks");
+                    b.ToTable("Track");
                 });
 
             modelBuilder.Entity("Album", b =>

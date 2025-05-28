@@ -15,25 +15,21 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"WriteLine":{
-		"prefix": "wl",
-		"body": "Console.WriteLine(\"$1\");",
-		"description": "C# console writeline",
-	},
-	"Write":{
-		"prefix": "wr",
-		"body": "Console.Write(\"$1\");",
-		"description": "C# console write",
-	},
 	"Log":{
 		"prefix": "cl",
-		"body": "console.log(\"$1\");",
+		"body": "console.log($1);",
+		"description": "JS console log",
+		"scope": "javascript"
+	},
+	"Quote Log":{
+		"prefix": "cl",
+		"body": "console.log($\"$1\");",
 		"description": "JS console log",
 		"scope": "javascript"
 	},
 	"HTML":{
 		"prefix": "hb",
-		"body": "",
+		"body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title></title>\n<script></script>\n<script></script>\n</head>\n<body>\n</body>\n</html>",
 		"description": "better HTML boilerplate",
 		"scope": "HTML"
 	},
